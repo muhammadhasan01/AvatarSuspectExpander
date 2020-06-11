@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import Navbar from './Navbar/Navbar';
+import { TextField, Typography } from '@material-ui/core';
 
-class App extends Component {
+const nameOfTitle = "Avatar Suspect Expander";
 
-  
-  render() {
+const App = () => {
     return (
-      <div>
-        
+      <div className="App">
+        <Navbar nameTitle={nameOfTitle}/>
       </div>
     )
-  }
 };
 
 export default App;
