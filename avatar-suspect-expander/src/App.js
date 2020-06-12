@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from './Navbar/Navbar';
-import { TextField, Typography } from '@material-ui/core';
 
 const nameOfTitle = "Avatar Suspect Expander";
 
