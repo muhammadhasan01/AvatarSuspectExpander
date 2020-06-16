@@ -1,6 +1,7 @@
 .searchBar {
     margin: auto;
     width: 75%;
+    text-align: center;
 }
 
 .searchTypography {
@@ -12,10 +13,4 @@
     margin: auto;
     width: 50%;
     padding: 20px 30px 30px 30px;
-}
-
-.searchButton {
-    margin: auto;
-    padding: 50px;
-    background-color: red;
 }
