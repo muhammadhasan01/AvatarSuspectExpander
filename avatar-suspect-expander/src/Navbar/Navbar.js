@@ -14,10 +14,21 @@ const navTheme = createMuiTheme({
     },
 });
 
+const styles = {
+    root: {
+      flexGrow: 1,
+    },
+    appbar: {
+      alignItems: 'center',
+    }
+};
+
 const NavBar = (props) => {
+
     return (
+        <div className={styles.root}>
         <ThemeProvider theme={navTheme}>
-            <AppBar position="static">
+            <AppBar style={styles.appbar} position="static">
                 <Toolbar>
                     <Typography variant="h5" color="inherit">
                     {props.nameTitle}
@@ -25,6 +36,7 @@ const NavBar = (props) => {
                 </Toolbar>
             </AppBar>
         </ThemeProvider>
+        </div>
     )
 }
 
