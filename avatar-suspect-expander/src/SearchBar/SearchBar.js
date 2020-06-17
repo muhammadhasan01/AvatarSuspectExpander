@@ -14,33 +14,45 @@ const navTheme = createMuiTheme({
       ].join(',')
     }
 });
-const SearchBar = () => {
-    
-    const onClicked = () => {
-        console.log('clicked');
+
+class SearchBar extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            idValue : ''
+        };
     }
 
-    const onSubmitted = () => {
-        console.log('submitted');
+    onChanged = (e) => {
+        this.setState( {idValue : e.target.value} );
     }
 
-    return (
-        <div className='searchBar' >
-        <ThemeProvider theme={navTheme}>
-        <Typography className='searchTypography' align='center' variant='h5'>
-        Search the person friends with the person's ID!
-        </Typography>
-        <form className='searchForm' onSubmit={onSubmitted}>
-            <OutlinedInput  fullWidth required type="number"
-                placeholder="Search by ID" variant="outlined" color="primary"/>            
-            <Box m={1.5} />
-            <Button  onClick={onClicked} variant='outlined' color='primary'>
-            SEARCH
-            </Button>
-        </form>
-        </ThemeProvider>
-        </div>
-    )
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("submitted", this.state.idValue);
+    }
+
+    render() {
+        return (
+            <div className='searchBar'>
+            <ThemeProvider theme={navTheme}>
+            <Typography className='searchTypography' align='center' variant='h5'>
+            Search the person friends with the person's ID!
+            </Typography>
+            <form className='searchForm'  onSubmit={this.handleSubmit}>
+                <OutlinedInput fullWidth required type="number"
+                    value={this.state.idValue} onChange={this.onChanged}
+                    placeholder="Search by ID" variant="outlined" color="primary"/>     
+                <Box m={1.2} />
+                <Button type='submit' variant='outlined' color='primary'>
+                SEARCH
+                </Button>
+            </form>
+            </ThemeProvider>
+            </div>
+        );
+    }
 }
 
 export default SearchBar;
