@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Box,
          Typography, OutlinedInput,
-         createMuiTheme, ThemeProvider} from '@material-ui/core';
+         createMuiTheme, ThemeProvider } from '@material-ui/core';
 import './SearchBar.css';
 
 const navTheme = createMuiTheme({
@@ -25,22 +25,23 @@ class SearchBar extends React.Component {
     }
 
     onChanged = (e) => {
-        this.setState( {idValue : e.target.value} );
+        this.setState({ idValue: e.target.value });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         console.log("submitted", this.state.idValue);
+        this.props.handleGetRequest(this.state.idValue);
     }
 
     render() {
         return (
             <div className='searchBar'>
             <ThemeProvider theme={navTheme}>
-            <Typography className='searchTypography' align='center' variant='h5'>
-            Search the person friends with the person's ID!
+            <Typography className='searchTypography' variant='h5'>
+            Search the person's friends with the person's ID!
             </Typography>
-            <form className='searchForm'  onSubmit={this.handleSubmit}>
+            <form className='searchForm' onSubmit={this.handleSubmit}>
                 <OutlinedInput fullWidth required type="number"
                     value={this.state.idValue} onChange={this.onChanged}
                     placeholder="Search by ID" variant="outlined" color="primary"/>     
