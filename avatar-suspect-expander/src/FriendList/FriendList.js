@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import GraphBuilder from '../GraphBuilder/GraphBuilder';
+import SearchBar from '../SearchBar/SearchBar';
+import FriendGraph from '../FriendGraph/FriendGraph';
 
 const API = 'https://avatar.labpro.dev/friends/';
 
@@ -9,27 +12,31 @@ class FriendList extends Component {
 
         this.state = {
             id: null,
-            name: null,
-            element: null,
-            friends: null
+            graphData: null,
+            error: null
         };
     }
 
     setData = (data) => {
-        const {id, name, element, friends} = data.payload;
-        this.setState( { id, name, element, friends });
+        const { id, name, element, friends } = data.payload;
+        const graphData = GraphBuilder(id, name, element, friends);
+        this.setState({ id, graphData, error: null });
     }
 
-    fetchData = (id) => {
+    handleGetRequest = (id) => {
+
+        const errorMsg = `Error: ID ${id} not found.`;
+
         axios.get(API + id)
         .then(result => this.setData(result.data))
-        .catch(error => console.log(error));
+        .catch(() => this.setState({ error: errorMsg }));
     }
 
     render() {
         return (
             <div>
-                
+                <SearchBar handleGetRequest={this.handleGetRequest} />
+                <FriendGraph dataValue={this.state} />
             </div>
         )
     }
