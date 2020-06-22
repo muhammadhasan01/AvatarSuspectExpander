@@ -56,10 +56,13 @@ You can then hover on a node to see it's detail such as ID, name, and the elemen
 
 ![HoverNode](./assets/HoverNode.png)
 
-You can also click on a node to see his/her friend's list.
+click the button below it to see it's friends list
 
 ![FriendsList](./assets/FriendsList.png)
 
+You can also click a node to expand the relationship.
+
+![ExpandGraph](./assets/ExpandGraph.png)
 
 ## API Review
 
@@ -76,3 +79,4 @@ According to my analysis, this API gives us a valid tuple of (ID, name, element)
 - [material-ui](https://material-ui.com/)
 - [axios](https://www.npmjs.com/package/axios)
 - [react-d3-graph](https://www.npmjs.com/package/react-d3-graph)
+- [react-responsive](https://github.com/contra/react-responsive)
