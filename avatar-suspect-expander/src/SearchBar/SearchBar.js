@@ -6,17 +6,6 @@ import './SearchBar.css';
 
 const searchTitle = "Search the person's graph of friends with the person's ID";
 
-const navTheme = createMuiTheme({
-    typography: {
-      fontFamily: [
-        '"Segoe UI"',
-        'Lato',
-        'Roboto',
-        '"Helvetica Neue"',
-      ].join(',')
-    }
-});
-
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +27,6 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className='searchBar'>
-            <ThemeProvider theme={navTheme}>
             <Typography className='searchTypography' variant='h5'>
             {searchTitle}
             </Typography>
@@ -51,7 +39,6 @@ class SearchBar extends React.Component {
                 SEARCH
                 </Button>
             </form>
-            </ThemeProvider>
             </div>
         );
     }
