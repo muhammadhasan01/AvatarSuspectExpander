@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import GraphBuilder from '../GraphBuilder/GraphBuilder';
+import GraphBuilder from '../utils/GraphBuilder';
+import MakeFriendsUnique from '../utils/MakeFriendsUnique';
 import SearchBar from '../SearchBar/SearchBar';
 import FriendGraph from '../FriendGraph/FriendGraph';
 
 const API = 'https://avatar.labpro.dev/friends/';
 
-class FriendList extends Component {
+class SearchGraph extends Component {
     constructor(props) {
         super(props);
 
@@ -19,14 +20,13 @@ class FriendList extends Component {
 
     setData = (data) => {
         const { id, name, element, friends } = data.payload;
-        const graphData = GraphBuilder(id, name, element, friends);
+        const uniqueFriends = MakeFriendsUnique(friends);
+        const graphData = GraphBuilder(id, name, element, uniqueFriends);
         this.setState({ id, graphData, error: null });
     }
 
     handleGetRequest = (id) => {
-
         const errorMsg = `Error: ID ${id} not found.`;
-
         axios.get(API + id)
         .then(result => this.setData(result.data))
         .catch(() => this.setState({ error: errorMsg }));
@@ -42,4 +42,4 @@ class FriendList extends Component {
     }
 }
 
-export default FriendList;
+export default SearchGraph;

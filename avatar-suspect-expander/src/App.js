@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar/Navbar';
-import FriendList from './FriendList/FriendList';
+import SearchGraph from './SearchGraph/SearchGraph';
 
 const nameOfTitle = "Avatar Suspect Expander";
 
@@ -8,7 +8,7 @@ const App = () => {
     return (
       <div className="App">
         <Navbar nameTitle={nameOfTitle} variant='h5' />
-        <FriendList />
+        <SearchGraph />
       </div>
     )
 };
