@@ -1,5 +1,5 @@
 import React from 'react';
-import { SwipeableDrawer, Typography,
+import { Drawer, Typography,
         Box, ListItemText, Button} from '@material-ui/core';
 import './FriendDrawer.css';
 import ColorElement from '../utils/ColorElement';
@@ -60,7 +60,7 @@ class FriendDrawer extends React.Component {
         return (
             <div>
                 <React.Fragment key={anchor}>
-                    <SwipeableDrawer
+                    <Drawer
                         anchor={anchor}
                         open={this.props.showFriends}
                         onClose={this.props.handleCloseDrawer}
@@ -69,7 +69,7 @@ class FriendDrawer extends React.Component {
                     <Button onClick={this.props.handleCloseDrawer}
                         color='primary' variant='outlined' size="large">CLOSE LIST</Button>
                     {list(this.props.name, this.props.friends)}
-                    </SwipeableDrawer>
+                    </Drawer>
                 </React.Fragment>
             </div>
         )   
