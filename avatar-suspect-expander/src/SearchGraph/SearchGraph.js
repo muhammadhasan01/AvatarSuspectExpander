@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import GraphBuilder from '../utils/GraphBuilder';
-import MakeFriendsUnique from '../utils/MakeFriendsUnique';
+import ValidateData from '../utils/ValidateData';
 import SearchBar from '../SearchBar/SearchBar';
 import FriendGraph from '../FriendGraph/FriendGraph';
 
@@ -20,8 +20,8 @@ class SearchGraph extends Component {
 
     setData = (data) => {
         const { id, name, element, friends } = data.payload;
-        const uniqueFriends = MakeFriendsUnique(friends);
-        const graphData = GraphBuilder(id, name, element, uniqueFriends);
+        const validFriends = ValidateData(id, friends);
+        const graphData = GraphBuilder(id, name, element, validFriends);
         this.setState({ id, graphData, error: null });
     }
 

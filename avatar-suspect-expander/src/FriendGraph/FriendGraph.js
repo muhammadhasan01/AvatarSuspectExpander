@@ -4,7 +4,7 @@ import { Typography, Box } from '@material-ui/core';
 import axios from 'axios';
 import FriendDrawer from '../FriendDrawer/FriendDrawer';
 import ColorElement from '../utils/ColorElement';
-import MakeFriendsUnique from '../utils/MakeFriendsUnique';
+import ValidateData from '../utils/ValidateData';
 import './FriendGraph.css';
 
 const API = 'https://avatar.labpro.dev/friends/';
@@ -48,10 +48,10 @@ class FriendGraph extends Component {
     }
         
     handleClickedNode = (data) => {
-        const { friends } = data.payload;
-        const uniqueFriends = MakeFriendsUnique(friends);
+        const { id, friends } = data.payload;
+        const validFriends = ValidateData(id, friends);
         this.setState({
-            friends: uniqueFriends,
+            friends: validFriends,
             showFriends: true
         });
     }
