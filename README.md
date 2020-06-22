@@ -67,7 +67,7 @@ The API used in this application can be accesed at <https://avatar.labpro.dev>. 
 
 ![APIExample](./assets/APIExample.png)
 
-According to my analysis, this API gives us a valid tuple of (ID, name, element), what this means is there is no data in which it has the same ID, but different value of name and element. Apart from that, this API has a vulnerability, that is some of the ID's friends has a duplicated entry. For an example the `ID = 160` has a duplicate entry in it's friend list which is `ID = 101` and `ID = 174`. This is why when getting the data from the API, I need to make it unique first so that when I make the resulting graph and friend list, it shows only one entry.
+According to my analysis, this API gives us a valid tuple of (ID, name, element), what this means is there is no data in which it has the same ID, but different value of name and element. Apart from that, this API has a vulnerability, that is some of the ID's friends has a duplicated entry. For an example the `ID = 160` has a duplicate entry in it's friend list which is `ID = 101` and `ID = 174`. Moreover, the ID's Friend list can have it's own ID, for an example, the `ID = 99` has an entry of it's self in it's friends list, which is `ID = 99`. This is why when getting the data from the API, I need to validate it first so that when I make the resulting graph and friend list, it shows valid entry.
 
 ## Library Used
 
