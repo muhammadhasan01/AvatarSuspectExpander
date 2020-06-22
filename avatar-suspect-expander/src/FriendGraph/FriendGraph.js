@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Graph } from "react-d3-graph";
-import { Typography, Box } from '@material-ui/core';
+import { Typography, Box, Button } from '@material-ui/core';
 import axios from 'axios';
 import FriendDrawer from '../FriendDrawer/FriendDrawer';
 import ColorElement from '../utils/ColorElement';
 import ValidateData from '../utils/ValidateData';
+import MediaQuery from 'react-responsive';
 import './FriendGraph.css';
 
-const API = 'https://avatar.labpro.dev/friends/';
-
-const graphConfig = {  
-    height: 280,
-    width: 440,
+const graphConfigLandscape = {  
+    height: 500,
+    width: 700,
     minZoom: 1,
     maxZoom: 1,
     node: {
@@ -20,6 +19,20 @@ const graphConfig = {
         strokeColor: 'black'
     }
 }
+
+const graphConfigPortrait = {
+    height: 460,
+    width: 400,
+    minZoom: 1,
+    maxZoom: 1,
+    node: {
+        size: 300,
+        fontSize: 15,
+        strokeColor: 'black'
+    }
+}
+
+const API = 'https://avatar.labpro.dev/friends/';
 
 class FriendGraph extends Component {
     constructor(props) {
@@ -47,7 +60,7 @@ class FriendGraph extends Component {
         )
     }
         
-    handleClickedNode = (data) => {
+    handleHoveredNodeDetail = (data) => {
         const { id, friends } = data.payload;
         const validFriends = ValidateData(id, friends);
         this.setState({
@@ -56,9 +69,9 @@ class FriendGraph extends Component {
         });
     }
 
-    onClickNode = (id) => {
-        axios.get(API + id)
-        .then(result => this.handleClickedNode(result.data))
+    onHoveredNodeDetail = () => {
+        axios.get(API + this.state.id)
+        .then(result => this.handleHoveredNodeDetail(result.data))
         .catch((error) => console.log(error));
     }
 
@@ -93,26 +106,46 @@ class FriendGraph extends Component {
                 <Typography variant='subtitle1'>
                     Hovered Node Details:
                 </Typography>
-                {this.state.id === null ? 
+                {this.state.id === null ?
+                    <div>
                     <Typography variant='subtitle1' style={{ color: 'gray' }}>
                         Hover on a node to see it's detail
                     </Typography>
+                    <Box m={1.2} />
+                    <Button variant='outlined' style={{ color: 'gray' }} disabled>
+                        See Hovered Node Friend's List
+                    </Button>
+                    </div>
                     :
+                    <div>
                     <Typography variant='subtitle1'
                     style={{ color: ColorElement.get(this.state.element) }}>
                         [{this.state.id}] {this.state.name} ({this.state.element})
                     </Typography>
+                    <Box m={1.2} />
+                    <Button onClick={this.onHoveredNodeDetail} variant='outlined' color='secondary'>
+                        See Hovered Node Friend's List
+                    </Button>
+                    </div>
                 }
+                <MediaQuery query="(orientation: landscape)">
                 <Graph
                     id="graph-id"
                     data={graphData.data}
-                    config={graphConfig}
+                    config={graphConfigLandscape}
                     onMouseOverNode={this.onMouseOverNode}
-                    onClickNode={this.onClickNode}
+                    onClickNode={this.props.onExpandNode}
                 />
-                <Typography variant='subtitle2' style={{ color: 'gray' }}>
-                    Tips: click on a node to see the person's friends list!
-                </Typography>
+                </MediaQuery>
+                <MediaQuery query="(orientation: portrait)">
+                <Graph
+                    id="graph-id"
+                    data={graphData.data}
+                    config={graphConfigPortrait}
+                    onMouseOverNode={this.onMouseOverNode}
+                    onClickNode={this.props.onExpandNode}
+                />
+                </MediaQuery>
                 <FriendDrawer
                         name={this.state.name}
                         friends={this.state.friends}
