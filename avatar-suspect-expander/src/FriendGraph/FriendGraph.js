@@ -113,7 +113,7 @@ class FriendGraph extends Component {
                     </Typography>
                     <Box m={1.2} />
                     <Button variant='outlined' style={{ color: 'gray' }} disabled>
-                        See Hovered Node Friend's List
+                        See Hovered Node Friends List
                     </Button>
                     </div>
                     :
@@ -124,7 +124,7 @@ class FriendGraph extends Component {
                     </Typography>
                     <Box m={1.2} />
                     <Button onClick={this.onHoveredNodeDetail} variant='outlined' color='secondary'>
-                        See Hovered Node Friend's List
+                        See Hovered Node Friends List
                     </Button>
                     </div>
                 }
