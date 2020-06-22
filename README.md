@@ -1,7 +1,7 @@
 # Second Test Selection - Programming Laboratory
 ## Avatar Suspect Expander Application
 
-**Avatar Suspect Expander Application** is a web application created using *React* that lets you search a person's relationship depicted with a graph. It is useful particularly for Wangky and his friend Toph. This web application is made by me, Muhammad Hasan (1358012).
+**Avatar Suspect Expander Application** is a web application created using *ReactJS* that lets you search a person's relationship depicted with a graph. It is useful particularly for Wangky and his friend Toph. This web application is made by me, Muhammad Hasan (13518012).
 
 ![AvatarSuspectExpander](./assets/AvatarSuspectExpander.png)
 
