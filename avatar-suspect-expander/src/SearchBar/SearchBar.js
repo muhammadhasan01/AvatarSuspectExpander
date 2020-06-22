@@ -4,6 +4,8 @@ import { Button, Box,
          createMuiTheme, ThemeProvider } from '@material-ui/core';
 import './SearchBar.css';
 
+const searchTitle = "Search the person's graph of friends with the person's ID";
+
 const navTheme = createMuiTheme({
     typography: {
       fontFamily: [
@@ -30,7 +32,6 @@ class SearchBar extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("submitted", this.state.idValue);
         this.props.handleGetRequest(this.state.idValue);
     }
 
@@ -39,7 +40,7 @@ class SearchBar extends React.Component {
             <div className='searchBar'>
             <ThemeProvider theme={navTheme}>
             <Typography className='searchTypography' variant='h5'>
-            Search the person's friends with the person's ID!
+            {searchTitle}
             </Typography>
             <form className='searchForm' onSubmit={this.handleSubmit}>
                 <OutlinedInput fullWidth required type="number"
