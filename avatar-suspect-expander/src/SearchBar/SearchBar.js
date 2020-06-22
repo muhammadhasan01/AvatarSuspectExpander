@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Box,
-         Typography, OutlinedInput,
-         createMuiTheme, ThemeProvider } from '@material-ui/core';
+         Typography, OutlinedInput } from '@material-ui/core';
 import './SearchBar.css';
 
 const searchTitle = "Search the person's graph of friends with the person's ID";
