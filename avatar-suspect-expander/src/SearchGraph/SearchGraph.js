@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import GraphBuilder from '../utils/GraphBuilder';
-import ValidateData from '../utils/ValidateData';
+import API from '../utils/Data/API';
+import GraphBuilder from '../utils/Graph/GraphBuilder';
+import ValidateData from '../utils/Data/ValidateData';
+import GraphExpander from '../utils/Graph/GraphExpander';
 import SearchBar from '../SearchBar/SearchBar';
 import FriendGraph from '../FriendGraph/FriendGraph';
-import GraphExpander from '../utils/GraphExpander';
-
-const API = 'https://avatar.labpro.dev/friends/';
 
 class SearchGraph extends Component {
     constructor(props) {
@@ -38,7 +37,6 @@ class SearchGraph extends Component {
         const { id, friends } = data.payload;
         const validFriends = ValidateData(id, friends);
         const graphData = GraphExpander(this.state.graphData, id, validFriends);
-        console.log(graphData.data);
         this.setState({ graphData })
     }
 

@@ -2,37 +2,13 @@ import React, { Component } from 'react';
 import { Graph } from "react-d3-graph";
 import { Typography, Box, Button } from '@material-ui/core';
 import axios from 'axios';
+import API from '../utils/Data/API';
 import FriendDrawer from '../FriendDrawer/FriendDrawer';
-import ColorElement from '../utils/ColorElement';
-import ValidateData from '../utils/ValidateData';
+import ColorElement from '../utils/Style/ColorElement';
+import ValidateData from '../utils/Data/ValidateData';
+import GraphConfiguration from '../utils/Graph/GraphConfiguration';
 import MediaQuery from 'react-responsive';
 import './FriendGraph.css';
-
-const graphConfigLandscape = {  
-    height: 500,
-    width: 700,
-    minZoom: 1,
-    maxZoom: 1,
-    node: {
-        size: 600,
-        fontSize: 15,
-        strokeColor: 'black'
-    }
-}
-
-const graphConfigPortrait = {
-    height: 460,
-    width: 400,
-    minZoom: 1,
-    maxZoom: 1,
-    node: {
-        size: 300,
-        fontSize: 15,
-        strokeColor: 'black'
-    }
-}
-
-const API = 'https://avatar.labpro.dev/friends/';
 
 class FriendGraph extends Component {
     constructor(props) {
@@ -132,7 +108,7 @@ class FriendGraph extends Component {
                 <Graph
                     id="graph-id"
                     data={graphData.data}
-                    config={graphConfigLandscape}
+                    config={GraphConfiguration.landscape}
                     onMouseOverNode={this.onMouseOverNode}
                     onClickNode={this.props.onExpandNode}
                 />
@@ -141,7 +117,7 @@ class FriendGraph extends Component {
                 <Graph
                     id="graph-id"
                     data={graphData.data}
-                    config={graphConfigPortrait}
+                    config={GraphConfiguration.portrait}
                     onMouseOverNode={this.onMouseOverNode}
                     onClickNode={this.props.onExpandNode}
                 />

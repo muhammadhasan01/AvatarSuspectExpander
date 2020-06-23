@@ -1,4 +1,4 @@
-import ColorElement from './ColorElement';
+import ColorElement from '../Style/ColorElement';
 
 const GraphBuilder = (id, name, element, friends) => {
     let data = {

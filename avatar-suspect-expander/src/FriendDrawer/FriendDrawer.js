@@ -2,7 +2,7 @@ import React from 'react';
 import { Drawer, Typography,
         Box, ListItemText, Button} from '@material-ui/core';
 import './FriendDrawer.css';
-import ColorElement from '../utils/ColorElement';
+import ColorElement from '../utils/Style/ColorElement';
 
 const anchor = 'bottom';
 

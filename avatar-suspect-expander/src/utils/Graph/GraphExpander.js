@@ -1,4 +1,4 @@
-import ColorElement from './ColorElement';
+import ColorElement from '../Style/ColorElement';
 
 const GraphExpander = (graphData, id, friends) => {
     let { data, mapData, mapLinks } = graphData;
