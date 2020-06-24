@@ -1,7 +1,7 @@
 const GraphConfiguration = {
     landscape: {
         height: 500,
-        width: 1200,
+        width: 1000,
         minZoom: 1,
         maxZoom: 1,
         node: {
