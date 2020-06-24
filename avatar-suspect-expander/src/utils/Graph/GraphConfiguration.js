@@ -10,9 +10,9 @@ const GraphConfiguration = {
             strokeColor: 'black'
         }
     },
-    potrait: {
-        height: 460,
-        width: 370,
+    portrait: {
+        height: 430,
+        width: 360,
         minZoom: 1,
         maxZoom: 1,
         node: {
