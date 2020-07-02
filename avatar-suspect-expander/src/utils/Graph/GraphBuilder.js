@@ -25,8 +25,8 @@ const GraphBuilder = (id, name, element, friends) => {
             color: 'black'
         });
         mapData.set(friend.id, { name: friend.name, element: friend.element });
-        mapLinks.set((id, friend.id), true);
-        mapLinks.set((friend.id, id), true);
+        mapLinks.set([id, friend.id], true);
+        mapLinks.set([friend.id, id], true);
     });
 
     return { data, mapData, mapLinks };

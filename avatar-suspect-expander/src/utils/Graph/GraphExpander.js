@@ -10,9 +10,9 @@ const GraphExpander = (graphData, id, friends) => {
                 color: ColorElement.get(friend.element)
             });
         }
-        if (mapLinks.has((id, friend.id)) === false) {
-            mapLinks.set((id, friend.id), true);
-            mapLinks.set((friend.id, id), true);
+        if (mapLinks.has([id, friend.id]) === false) {
+            mapLinks.set([id, friend.id], true);
+            mapLinks.set([friend.id, id], true);
             data.links.push({ 
                 source: id,
                 target: friend.id,

@@ -36,7 +36,9 @@ class SearchGraph extends Component {
     handleExpand = (data) => {
         const { id, friends } = data.payload;
         const validFriends = ValidateData(id, friends);
+        console.log("Sebelum", this.state.graphData);
         const graphData = GraphExpander(this.state.graphData, id, validFriends);
+        console.log("Sesudah", graphData);
         this.setState({ graphData })
     }
 
